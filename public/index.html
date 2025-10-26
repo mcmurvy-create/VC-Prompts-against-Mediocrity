@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Prompts against Mediocrity 🤖</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Das KI-Büro-Spiel für Menschen mit Humor">
+</head>
+<body>
+    <div id="app">
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen">
+            <div class="logo">🤖</div>
+            <h1>Prompts against Mediocrity</h1>
+            <p class="subtitle">Das KI-Büro-Spiel für Menschen mit Humor</p>
+            
+            <div class="input-group">
+                <input type="text" id="playerName" placeholder="Dein Name" maxlength="20" autocomplete="off">
+            </div>
+            
+            <div class="button-group">
+                <button id="createGameBtn" class="btn btn-primary">Neues Spiel erstellen</button>
+            </div>
+            
+            <div class="divider">oder</div>
+            
+            <div class="input-group">
+                <input type="text" id="gameIdInput" placeholder="Spiel-Code (z.B. ABC123)" maxlength="10" autocomplete="off" style="text-transform: uppercase;">
+                <button id="joinGameBtn" class="btn btn-secondary">Spiel beitreten</button>
+            </div>
+
+            <div class="info-box">
+                <p><strong>Spielregeln:</strong></p>
+                <ul>
+                    <li>Min. 3 Spieler benötigt</li>
+                    <li>Jede Runde gibt es einen Prompt Master 👑</li>
+                    <li>Andere wählen ihre lustigste Karte</li>
+                    <li>Prompt Master wählt den Gewinner</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen" class="screen" style="display: none;">
+            <div class="game-header">
+                <div class="game-info">
+                    <span id="gameId" class="game-code"></span>
+                    <span id="roundInfo"></span>
+                </div>
+                <button id="leaveGameBtn" class="btn-small">❌ Verlassen</button>
+            </div>
+
+            <!-- Players -->
+            <div id="playersSection">
+                <h3>Spieler</h3>
+                <div id="players" class="players"></div>
+            </div>
+
+            <!-- Black Card -->
+            <div id="blackCardArea" class="black-card-area">
+                <div id="blackCard" class="card card-black"></div>
+            </div>
+
+            <!-- Game Status -->
+            <div id="gameStatus" class="game-status"></div>
+
+            <!-- Submissions (for Czar) -->
+            <div id="submissionsArea" style="display: none;">
+                <h3>👀 Wähle die beste Antwort:</h3>
+                <div id="submissions" class="cards-hand"></div>
+            </div>
+
+            <!-- Player Hand -->
+            <div id="handArea">
+                <h3>Deine Karten:</h3>
+                <div id="hand" class="cards-hand"></div>
+            </div>
+
+            <!-- Actions -->
+            <div id="actions" class="actions"></div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
